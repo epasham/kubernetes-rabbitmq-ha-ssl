@@ -1,4 +1,4 @@
-How to setup:
+# How to setup:
 
 1. Authenticate in your k8s cluster
 
@@ -7,6 +7,7 @@ How to setup:
 	$ make PASSWORD=<password> CN=<DNS name>`
 
 3. Copy and paste the content of the certificates files to rabbitmq-configmap.yaml
+
 	`$ cat tls-gen/basic/result/ca_certificate.pem
 	$ cat tls-gen/basic/result/server_certificate.pem
 	$ cat tls-gen/basic/result/server_key.pem`
@@ -19,9 +20,7 @@ How to setup:
 
 RabbitMQ will be available at the port 5671 with SSL authentication.
 
------------------------------------------------------------------------------------------
-
-To check if the HA is working:
+# To check if the HA is working:
 
 `$ FIRST_POD=$(kubectl get pods -l 'app=rabbitmq' -o jsonpath='{.items[0].metadata.name }')
 $ kubectl exec $FIRST_POD rabbitmqctl cluster_status`
